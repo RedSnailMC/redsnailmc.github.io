@@ -27,6 +27,7 @@
   <!-- Custom Files headBegin begin-->
   
   <!-- Custom Files headBegin end-->
+    <link rel="shortcut icon" type='image/x-icon' href="https://r2.redsnailmc.com/blog/favicon.ico">
   <link rel="preload" href="/css/style.css" as="style">
   <link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
@@ -2253,7 +2254,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: false,
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1753705197908),
+    lastupdate: new Date(1753844311665),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2577,7 +2578,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://blog.redsnailmc.com/post/test/">
+  <link itemprop="mainEntityOfPage" href="https://blog.redsnailmc.com/posts/test/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="RedSnailMC Blog">
   </span>
@@ -2595,7 +2596,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/post/test/"  itemprop="url">
+      <a href="/posts/test/"  itemprop="url">
         title
       </a>
     </h2>
@@ -2614,7 +2615,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       </div>
       
         <div>
-          <a class='readmore' href='/post/test/' itemprop="url">
+          <a class='readmore' href='/posts/test/' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -2648,7 +2649,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       
         <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://img-cdn.redsnailmc.com/hexo/redsnailmc.jpg'/>
+          <img no-lazy src='https://r2.redsnailmc.com/blog/redsnailmc.webp'/>
         </a>
       
     
@@ -2658,9 +2659,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <h2>RedSnailMC</h2>
         
         
-        
-          <p><span id="jinrishici-sentence">RedSnailMC Blog</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
         
       </div>
     
@@ -3026,7 +3024,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     if (path.length == 0) {
       path = '' || decodeURI(window.location.pathname);
     }
-    if(!'post/:name/'.includes('/index.html')) {
+    if(!'posts/:name/'.includes('/index.html')) {
       path = path.replaceAll('/index.html', '/').replaceAll('.html', '')
     }
 
@@ -3139,7 +3137,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://img-cdn.redsnailmc.com/hexo/background.JPG"];
+  let imgs = ["https://r2.redsnailmc.com/blog/background.webp"];
   let index = 0;
   let IntervalParallax = null;
 
