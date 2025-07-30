@@ -56,21 +56,4 @@
     
   </entry>
   
-  <entry>
-    <title>title</title>
-    <link href="https://blog.redsnailmc.com/posts/test/"/>
-    <id>https://blog.redsnailmc.com/posts/test/</id>
-    <published>2024-03-03T03:36:56.343Z</published>
-    <updated>2024-03-03T03:37:29.003Z</updated>
-    
-    <content type="html"><![CDATA[<p>test</p>]]></content>
-    
-    
-    <summary type="html">test </summary>
-    
-    
-    
-    
-  </entry>
-  
 </feed>
