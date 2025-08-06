@@ -5,8 +5,8 @@
   <meta name="Volantis" content="6.0.0-alpha.1">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://blog.redsnailmc.com/"/>
+  
+  <link rel="canonical" href="https://blog.redsnailmc.com/posts/edgeone-with-cloudflare-r2/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -35,15 +35,19 @@
   <!-- feed -->
       <link rel="alternate" href="/atom.xml" title="RedSnailMC Blog" type="application/atom+xml">
   <!-- 页面元数据 -->
-  <title>RedSnailMC Blog</title>
-  <meta name="keywords" content="">
+  <title>EdgeOne CDN 接入 CloudFlare R2教程 - RedSnailMC Blog</title>
+  <meta name="keywords" content="null">
   <meta desc name="description" content="RedSnailMC Blog - RedSnailMC - RedSnailMC Blog">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="RedSnailMC Blog">
-<meta property="og:url" content="https://blog.redsnailmc.com/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="EdgeOne CDN 接入 CloudFlare R2教程">
+<meta property="og:url" content="https://blog.redsnailmc.com/posts/edgeone-with-cloudflare-r2/index.html">
 <meta property="og:site_name" content="RedSnailMC Blog">
+<meta property="og:description" content="EdgeOne是个不错的CDN服务，CloudFlare R2 是个不错的对象存储服务（10GB免费空间），我们把他们结合一下，就可以做出一个速度不错的文件分发&#x2F;图床服务了，以下是我的操作流程和一些踩坑经验。 前言r2和EdgeOne的开通教程，这里不过多赘述，以下默认您已完成了r2和EdgeOne的开通操作。 配置CloudFlare R2存储桶首先打开 CloudFlare R2 的">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-08-06T02:29:35.000Z">
+<meta property="article:modified_time" content="2025-08-06T02:35:26.128Z">
 <meta property="article:author" content="RedSnailMC">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2246,7 +2250,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2311,7 +2315,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin begin-->
     
     <!-- Custom Files bodyBegin end-->
-    <header itemscope itemtype="https://schema.org.cn/WPHeader" id="l_header" class="l_header always shadow blur "  >
+    <header itemscope itemtype="https://schema.org.cn/WPHeader" id="l_header" class="l_header always shadow blur show"  >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2530,63 +2534,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div id="l_body">
       <div id="l_cover">
   
-    
-      <div class="cover-wrapper  dock" id='full'>
-        
-  <div id="parallax-window"></div>
-
-<div class='cover-body'>
-  <div class='top'>
-    
-    
-      <p class="title">RedSnailMC</p>
-    
-    
-      <p class="subtitle">个人博客</p>
-    
-  </div>
-  <div class='bottom'>
-    <div class='menu navigation'>
-      <div class='list-h'>
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-        <div id="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-      </div>
-    
-  
 </div>
 
       <div id="safearea">
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="https://blog.redsnailmc.com/posts/edgeone-with-cloudflare-r2/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="RedSnailMC Blog">
@@ -2596,170 +2550,161 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/posts/edgeone-with-cloudflare-r2/"  itemprop="url">
+    
+    
+      <h1 class="title" itemprop="name headline">
         EdgeOne CDN 接入 CloudFlare R2教程
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        EdgeOne是个不错的CDN服务，CloudFlare R2 是个不错的对象存储服务（10GB免费空间），我们把他们结合一下，就可以做出一个速度不错的文件分发&#x2F;图床服务了，以下是我的操作流程和一些踩坑经验。
-前言r2和EdgeOne的开通教程，这里不过多赘述，以下默认您已完成了r2和EdgeOne的开通操作。
-配置CloudFlare R2存储桶首先打开 CloudFlare R...
-      
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
+  <a itemprop="url" class='author' href="https://blog.redsnailmc.com/" rel="nofollow">
+    <img itemprop="image" src="https://r2.redsnailmc.com/blog/redsnailmc.webp" class="lazyload" data-srcset="https://r2.redsnailmc.com/blog/redsnailmc.webp" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">RedSnailMC</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-08-06T10:29:35+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2025年8月6日</p>
+  </a>
+</div>
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <p>EdgeOne是个不错的CDN服务，CloudFlare R2 是个不错的对象存储服务（10GB免费空间），我们把他们结合一下，就可以做出一个速度不错的文件分发&#x2F;图床服务了，以下是我的操作流程和一些踩坑经验。</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>r2和EdgeOne的开通教程，这里不过多赘述，以下默认您已完成了r2和EdgeOne的开通操作。</p>
+<h3 id="配置CloudFlare-R2存储桶"><a href="#配置CloudFlare-R2存储桶" class="headerlink" title="配置CloudFlare R2存储桶"></a>配置CloudFlare R2存储桶</h3><p>首先打开 CloudFlare R2 的控制台，点击右侧的“创建存储桶”按钮。<br><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/1.png" class="lazyload" data-srcset="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1.png"><br>除名字外，其他设置保持默认即可。<br><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/2.png" class="lazyload" data-srcset="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="2.png"><br>创建完成后，点击创建好的存储桶，进入存储桶设置页面。</p>
+<p>复制这里的S3 API地址，保留备用。<br><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/3.png" class="lazyload" data-srcset="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/3.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="3.png"><br>回到R2控制台首页，点击右侧的API，并点击”管理API令牌“。<br><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/4.png" class="lazyload" data-srcset="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/4.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="4.png"><br>进入页面后，点击右侧的“创建 Account API 令牌”。</p>
+<p>权限建议选择“对象读和写”方便以后向里存储数据，指定存储桶按需求配置，最后点击下方的创建即可。<br><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/5.png" class="lazyload" data-srcset="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/5.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="5.png"><br>将这三项都复制下来，保留备用（本文中只会用到访问密钥ID 和机密访问密钥，但仍然建议将三项都复制下来保管） ，它们只会显示一次，所以请妥善保管它们。<br><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/6.png" class="lazyload" data-srcset="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/6.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="6.png"><br>至此R2的配置到此结束。</p>
+<hr>
+<h3 id="配置EdgeOne"><a href="#配置EdgeOne" class="headerlink" title="配置EdgeOne"></a>配置EdgeOne</h3><p>首先来到EdgeOne的管理后台，点击您网站右侧的域名管理。<br><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/7.png" class="lazyload" data-srcset="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/7.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="7.png"><br>进入页面后点击上方添加域名，加速域名根据需求填写，源站配置选择“对象存储源站”和“S3兼容”，注意这后面的源站地址，刚刚复制的是类似这样的地址:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://114514abcdefghijk.r2.cloudflarestorage.com/test</span><br></pre></td></tr></table></figure>
+<p>其中 test 是我们的存储桶名称，那我们填写EO源站配置时，我们应该填写的是:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.114514abcdefghijk.r2.cloudflarestorage.com</span><br></pre></td></tr></table></figure>
+<p>test要加在链接的前面，并且协议要去掉</p>
+<p>启用私有访问授权<br>Access Key ID 填写刚才复制的访问密钥 ID<br>Secret Access Key 填写刚才复制的机密访问密钥<br>模板选择不使用<br><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/8.png" class="lazyload" data-srcset="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/8.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="8.png"><br>最后按照流程创建网站即可，这里就不赘述了。<br>现在EdgeOne就已经成功接入到 r2了。</p>
+
+  </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-08-06T10:29:35+08:00">2025-08-06</time>
-        
-      </div>
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/posts/edgeone-with-cloudflare-r2/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-08-06T10:35:26+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>本页文档最后更新于：2025年8月6日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://blog.redsnailmc.com/posts/racknerd-vps-upgrade/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="RedSnailMC Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="RedSnailMC Blog">
-    <meta itemprop="description" content="">
-  </span>
+          
+
+        
+      
+        
+          
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/posts/racknerd-vps-upgrade/'>
+          <p class='title'>RackNerd促销vps升级教程<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>前言这家服务商总会出一些便宜的vps，眼馋买了一个1c1g版本的，但后来1g内存不太够用了，于是就想升级到2gb内存版本，vps面板上是没有升级选项的，不知道是不是因为促销vps的问题，但经过测...</p>
+        </a>
+      
+    </div>
+  
+  <!-- 文章推荐 -->
+  
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/posts/edgeone-with-cloudflare-r2/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/posts/racknerd-vps-upgrade/"  itemprop="url">
-        RackNerd促销vps升级教程
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        前言这家服务商总会出一些便宜的vps，眼馋买了一个1c1g版本的，但后来1g内存不太够用了，于是就想升级到2gb内存版本，vps面板上是没有升级选项的，不知道是不是因为促销vps的问题，但经过测试这样的vps是可以发工单升级的。
-升级教程首先去发个工单，类型选择销售，告诉他你需要升级服务器，就像下面这样:
-（由于这里我已经升级过了，所以产品 id 上面写的是2gb KVM）
-等几分钟就会有人...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-07-30T08:42:38+08:00">2025-07-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/posts/racknerd-vps-upgrade/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://blog.redsnailmc.com/posts/hello-world/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="RedSnailMC Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="RedSnailMC Blog">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/posts/hello-world/"  itemprop="url">
-        Hello World
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-07-20T08:46:58+08:00">2025-07-20</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/posts/hello-world/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
+  </article>
 
-</div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+
+
 
 
 </div>
@@ -2830,12 +2775,39 @@ Qu...
     
     
       
+    
+  
+
+  
+    
+    
+      
 
     
   
 
 
 <div class="widget-sticky">
+
+  
+  
+
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
+  
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AECloudFlare-R2%E5%AD%98%E5%82%A8%E6%A1%B6"><span class="toc-text">配置CloudFlare R2存储桶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEEdgeOne"><span class="toc-text">配置EdgeOne</span></a></li></ol>
+  </div>
+</section>
+
+  
 
 </div>
 
@@ -3497,7 +3469,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"RedSnailMC Blog","url":"https://blog.redsnailmc.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"RedSnailMC","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.redsnailmc.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://blog.redsnailmc.com/","name":"RedSnailMC Blog"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"RedSnailMC Blog","url":"https://blog.redsnailmc.com/","keywords":null,"description":"","author":{"@type":"Person","name":"RedSnailMC","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.redsnailmc.com/","description":""},"publisher":{"@type":"Organization","name":"RedSnailMC Blog","url":"https://blog.redsnailmc.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://blog.redsnailmc.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"RedSnailMC","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.redsnailmc.com/"},"publisher":{"@type":"Organization","name":"RedSnailMC Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"RedSnailMC Blog","url":"https://blog.redsnailmc.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"RedSnailMC","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.redsnailmc.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://blog.redsnailmc.com/","name":"RedSnailMC Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://blog.redsnailmc.com/posts/edgeone-with-cloudflare-r2/","name":"EdgeOne CDN 接入 CloudFlare R2教程"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"RedSnailMC Blog","url":"https://blog.redsnailmc.com/","keywords":null,"description":"","author":{"@type":"Person","name":"RedSnailMC","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.redsnailmc.com/","description":""},"publisher":{"@type":"Organization","name":"RedSnailMC Blog","url":"https://blog.redsnailmc.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://blog.redsnailmc.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"EdgeOne CDN 接入 CloudFlare R2教程","description":"","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.redsnailmc.com/posts/edgeone-with-cloudflare-r2/"},"author":{"@type":"Person","name":"RedSnailMC","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://blog.redsnailmc.com/"},"publisher":{"@type":"Organization","name":"RedSnailMC Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://blog.redsnailmc.com/posts/edgeone-with-cloudflare-r2/","wordCount":0,"datePublished":"2025-08-06T02:29:35.000Z","dateModified":"2025-08-06T02:35:26.128Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
