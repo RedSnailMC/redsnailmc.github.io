@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>新然字节</title>
+  
+  <subtitle>RanBytes</subtitle>
+  <link href="https://blog.redsnailmc.com/atom.xml" rel="self"/>
+  
+  <link href="https://blog.redsnailmc.com/"/>
+  <updated>2025-12-28T03:22:39.140Z</updated>
+  <id>https://blog.redsnailmc.com/</id>
+  
+  <author>
+    <name>RanBytes</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>EdgeOne CDN 接入 CloudFlare R2教程</title>
+    <link href="https://blog.redsnailmc.com/posts/edgeone-with-cloudflare-r2/"/>
+    <id>https://blog.redsnailmc.com/posts/edgeone-with-cloudflare-r2/</id>
+    <published>2025-08-06T02:29:35.000Z</published>
+    <updated>2025-12-28T03:22:39.140Z</updated>
+    
+    <content type="html"><![CDATA[<p>EdgeOne是个不错的CDN服务，CloudFlare R2 是个不错的对象存储服务（10GB免费空间），我们把他们结合一下，就可以做出一个文件分发&#x2F;图床服务了，以下是我的操作流程和一些踩坑经验。</p><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>r2和EdgeOne的开通教程，这里不过多赘述，以下默认您已完成了r2和EdgeOne的开通操作。</p><h3 id="配置CloudFlare-R2存储桶"><a href="#配置CloudFlare-R2存储桶" class="headerlink" title="配置CloudFlare R2存储桶"></a>配置CloudFlare R2存储桶</h3><p>首先打开 CloudFlare R2 的控制台，点击右侧的“创建存储桶”按钮。</p><p><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/1.png" alt="1.png"></p><p>除名字外，其他设置保持默认即可。</p><p><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/2.png" alt="2.png"></p><p>创建完成后，点击创建好的存储桶，进入存储桶设置页面。</p><p>复制这里的S3 API地址，保留备用。</p><p><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/3.png" alt="3.png"></p><p>回到R2控制台首页，点击右侧的API，并点击”管理API令牌“。</p><p><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/4.png" alt="4.png"></p><p>进入页面后，点击右侧的“创建 Account API 令牌”。</p><p>权限建议选择“对象读和写”方便以后向里存储数据，指定存储桶按需求配置，最后点击下方的创建即可。</p><p><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/5.png" alt="5.png"></p><p>将这三项都复制下来，保留备用（本文中只会用到访问密钥ID 和机密访问密钥，但仍然建议将三项都复制下来保管） ，它们只会显示一次，所以请妥善保管它们。</p><p><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/6.png" alt="6.png"></p><p>至此R2的配置到此结束。</p><hr><h3 id="配置EdgeOne"><a href="#配置EdgeOne" class="headerlink" title="配置EdgeOne"></a>配置EdgeOne</h3><p>首先来到EdgeOne的管理后台，点击您网站右侧的域名管理。</p><p><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/7.png" alt="7.png"></p><p>进入页面后点击上方添加域名，加速域名根据需求填写，源站配置选择“对象存储源站”和“S3兼容”，注意这后面的源站地址，刚刚复制的是类似这样的地址:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://114514abcdefghijk.r2.cloudflarestorage.com/test</span><br></pre></td></tr></table></figure><p>其中 test 是我们的存储桶名称，那我们填写EO源站配置时，我们应该填写的是:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.114514abcdefghijk.r2.cloudflarestorage.com</span><br></pre></td></tr></table></figure><p>test要加在链接的前面，并且协议要去掉</p><p>启用私有访问授权<br>Access Key ID 填写刚才复制的访问密钥 ID<br>Secret Access Key 填写刚才复制的机密访问密钥<br>模板选择不使用</p><p><img src="https://r2.redsnailmc.com/edgeone-with-cloudflare-r2/8.png" alt="8.png"></p><p>最后按照流程创建网站即可，这里就不赘述了。<br>现在EdgeOne就已经成功接入到 r2了。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;EdgeOne是个不错的CDN服务，CloudFlare R2 是个不错的对象存储服务（10GB免费空间），我们把他们结合一下，就可以做出一个文件分发&amp;#x2F;图床服务了，以下是我的操作流程和一些踩坑经验。&lt;/p&gt;
+&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; cl</summary>
+      
+    
+    
+    
+    
+    <category term="教程" scheme="https://blog.redsnailmc.com/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RackNerd促销vps升级教程</title>
+    <link href="https://blog.redsnailmc.com/posts/racknerd-vps-upgrade/"/>
+    <id>https://blog.redsnailmc.com/posts/racknerd-vps-upgrade/</id>
+    <published>2025-07-30T00:42:38.000Z</published>
+    <updated>2025-12-28T03:21:04.740Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这家服务商总会出一些便宜的vps，眼馋买了一个1c1g版本的，但后来1g内存不太够用了，于是就想升级到2gb内存版本，vps面板上是没有升级选项的，不知道是不是因为促销vps的问题，但经过测试这样的vps是可以发工单升级的。</p><h3 id="升级教程"><a href="#升级教程" class="headerlink" title="升级教程"></a>升级教程</h3><p>首先去发个工单，类型选择销售，告诉他你需要升级服务器，就像下面这样:</p><p><img src="https://r2.redsnailmc.com/racknerd-vps-upgrade/1.png" alt="1"><br>（由于这里我已经升级过了，所以产品 id 上面写的是2gb KVM）</p><p>等几分钟就会有人回你了:</p><p><img src="https://r2.redsnailmc.com/racknerd-vps-upgrade/2.png" alt="2"><br>这里要求截图你想升级的vps计划，截图后上传到工单附件里就行了。</p><p>再等待一会，工作人员就会回复可以升级，并询问是否确认，回复确认即可。<br><img src="https://r2.redsnailmc.com/racknerd-vps-upgrade/3.png" alt="3"><br><img src="https://r2.redsnailmc.com/racknerd-vps-upgrade/4.png" alt="4"></p><p>确认后就会给你开一个账单，支付账单后你需要回复他们，告诉他们你已经支付了账单，然后就可以升级成功了。</p><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>1.升级之后磁盘分区需要手动调整（嫌麻烦的可以直接重装系统）<br>2.他们告知你升级完成后，你需要去他们的管理面板重启vps才可以使升级生效（用ssh等方式重启vps系统不行）<br><br>至此vps 就已经升级完成了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;这家服务商总会出一些便宜的vps，眼馋买了一个1c1g版本的，但后来1g内存不太够用了，于是就想升级到2gb内存版本，vps面板上是没有升级</summary>
+      
+    
+    
+    
+    
+    <category term="教程" scheme="https://blog.redsnailmc.com/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://blog.redsnailmc.com/posts/hello-world/"/>
+    <id>https://blog.redsnailmc.com/posts/hello-world/</id>
+    <published>2025-07-29T01:26:34.000Z</published>
+    <updated>2025-12-28T03:20:47.844Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
