@@ -224,7 +224,7 @@ setTimeout(() => {
         el.innerHTML = data.length !== 0 ? data.map(i => `
                                     <div class="comment-card" title="${i.title}" onclick="pjax.loadUrl('${i.url}')">
                                         <div class="comment-info">
-                                            <img src="https://weavatar.com" class="nolazyload" alt="${i.nick}">
+                                            <img src="${i.avatar}" class="nolazyload" alt="${i.nick}">
                                             <div>
                                                 <span class="comment-user">${i.nick}</span>
                                             </div>
