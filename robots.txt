@@ -1,0 +1,8 @@
+User-agent: Baiduspider
+
+Sitemap: https://www.ranbytes.com/baidusitemap.xml
+
+User-agent: *
+Disallow:
+
+Sitemap: https://www.ranbytes.com/sitemap.xml

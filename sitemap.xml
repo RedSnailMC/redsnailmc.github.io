@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.redsnailmc.com/recentcomment/index.html</loc>
+    <loc>https://www.ranbytes.com/recentcomment/index.html</loc>
     
     <lastmod>2025-12-28</lastmod>
     
@@ -11,54 +11,54 @@
   </url>
   
   <url>
-    <loc>https://blog.redsnailmc.com/posts/edgeone-with-cloudflare-r2/</loc>
+    <loc>https://www.ranbytes.com/posts/edgeone-with-cloudflare-r2/</loc>
     
-    <lastmod>2025-12-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.redsnailmc.com/posts/racknerd-vps-upgrade/</loc>
-    
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2025-08-06</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.redsnailmc.com/posts/hello-world/</loc>
+    <loc>https://www.ranbytes.com/posts/racknerd-vps-upgrade/</loc>
     
-    <lastmod>2025-12-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.redsnailmc.com/links/index.html</loc>
-    
-    <lastmod>2025-12-21</lastmod>
+    <lastmod>2025-07-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.redsnailmc.com/about/index.html</loc>
+    <loc>https://www.ranbytes.com/posts/hello-world/</loc>
     
-    <lastmod>2025-12-21</lastmod>
+    <lastmod>2025-07-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.redsnailmc.com/categories/index.html</loc>
+    <loc>https://www.ranbytes.com/about/index.html</loc>
     
-    <lastmod>2025-12-14</lastmod>
+    <lastmod>2025-07-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ranbytes.com/links/index.html</loc>
+    
+    <lastmod>2025-07-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ranbytes.com/categories/index.html</loc>
+    
+    <lastmod>2022-02-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -66,16 +66,16 @@
   
 
   <url>
-    <loc>https://blog.redsnailmc.com/</loc>
-    <lastmod>2025-12-30</lastmod>
+    <loc>https://www.ranbytes.com/</loc>
+    <lastmod>2025-12-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://blog.redsnailmc.com/tags/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2025-12-30</lastmod>
+    <loc>https://www.ranbytes.com/tags/%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2025-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
