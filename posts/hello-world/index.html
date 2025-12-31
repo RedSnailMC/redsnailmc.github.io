@@ -189,7 +189,7 @@ setTimeout(() => {
         return
     }
     let ls = []
-    const searchParams = new URLSearchParams({'site_name': "RedSnailMC Blog", 'limit': '6'})
+    const searchParams = new URLSearchParams({'site_name': "RanBytes", 'limit': '6'})
     await fetch(`https://comment.redsnailmc.com/api/v2/stats/latest_comments?${searchParams}`, {method: 'GET'}).then(async res => res.json())
         .then(async data => {
             for (const i of data.data) {
@@ -346,7 +346,7 @@ utils.addGlobalFn('pjaxSend', () => {
         artalkItem = Artalk.init({
             el: '#artalk-wrap',
             server: 'https://comment.redsnailmc.com',
-            site: "RedSnailMC Blog",
+            site: "RanBytes",
             pageKey: location.pathname,
             darkMode: document.documentElement.getAttribute('data-theme') === 'dark'
         }, null)
