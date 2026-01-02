@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.ranbytes.com/posts/tailscale-subnet-pve/</loc>
+    
+    <lastmod>2026-01-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.ranbytes.com/posts/2026-first-post/</loc>
     
     <lastmod>2025-12-31</lastmod>
@@ -76,7 +85,7 @@
 
   <url>
     <loc>https://www.ranbytes.com/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -84,14 +93,35 @@
   
   <url>
     <loc>https://www.ranbytes.com/tags/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.ranbytes.com/tags/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ranbytes.com/tags/TailScale/</loc>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ranbytes.com/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ranbytes.com/tags/PVE/</loc>
+    <lastmod>2026-01-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

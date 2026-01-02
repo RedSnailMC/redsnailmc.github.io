@@ -6,7 +6,7 @@
   <link href="https://www.ranbytes.com/atom.xml" rel="self"/>
   
   <link href="https://www.ranbytes.com/"/>
-  <updated>2025-12-31T16:00:00.000Z</updated>
+  <updated>2026-01-02T12:38:40.000Z</updated>
   <id>https://www.ranbytes.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>利用Subnet 与PVE虚拟交换机，实现远程所有虚拟机！</title>
+    <link href="https://www.ranbytes.com/posts/tailscale-subnet-pve/"/>
+    <id>https://www.ranbytes.com/posts/tailscale-subnet-pve/</id>
+    <published>2026-01-02T12:38:40.000Z</published>
+    <updated>2026-01-02T12:38:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>自用的PVE也有5，6台虚拟机了，以前远程访问都是靠在每台虚拟机上安装tailscale，这也是官方推荐的方法，但是这样会开很多个tailscale进程，浪费内存资源，虽然可以利用tailscale subnet 实现点对网访问，但是如果直接使用tailscale subnet代理整个局域网，会导致局域网内部安装有tailscale的设备通信出现问题，于是就有了本文介绍的方案，仅利用一个位于 lxc 中的 tailscale 进程即可访问全部虚拟机，且不影响局域网工作。</p><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><img src="https://r2.redsnailmc.com/picture/202601/02/%E5%88%A9%E7%94%A8Subnet%20%E4%B8%8EPVE%E8%99%9A%E6%8B%9F%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E6%89%80%E6%9C%89%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%81-1767357325460.jpg?BaamE6oTiX" alt="利用Subnet 与PVE虚拟交换机，实现远程所有虚拟机！-1767357325460.webp|527x361"><br>这样就可以使subnet流量经由虚拟交换机处理，所有流量传输均在PVE主机内部完成，不影响局域网。</p><h3 id="配置虚拟交换机"><a href="#配置虚拟交换机" class="headerlink" title="配置虚拟交换机"></a>配置虚拟交换机</h3><p>首先打开 pve 后台，依次点击pve节点，网络，创建，跟随下方图片操作，在弹出的选项中选择Linux Bridge。<br><img src="https://r2.redsnailmc.com/picture/202601/02/005-vmbr.jpg?SDNO21IEg9" alt="005-vmbr.webp|700x356"><br>弹出的面板中，只需要修改IPV4&#x2F;CIDR，我这里使用10.0.0.1&#x2F;24网段，您也可以使用其他局域网网段，修改完成后点击创建即可。<br><img src="https://r2.redsnailmc.com/picture/202601/02/005-linux-bridge.jpg?9HuU6PifTv" alt="005-linux-bridge.webp"></p><h3 id="创建LXC容器"><a href="#创建LXC容器" class="headerlink" title="创建LXC容器"></a>创建LXC容器</h3><p>新建LXC的流程就不过多赘述了，建议使用debian12模板，创建完成之后先来到 LXC 的网络面板，点击上方的添加。<br><img src="https://r2.redsnailmc.com/picture/202601/02/005-lxc-network.jpg?rYFmbMCsgj" alt="005-lxc-network.webp"><br>名称随便填，桥接选择刚刚创建好的Linux Bridge名称，我这里是vmbr1，IPv4&#x2F;CIDR 填写一个位于刚刚Linux Bridge网段下的IP，网关不用填写，点击添加即可。<br><img src="https://r2.redsnailmc.com/picture/202601/02/005-lxc-network-1.jpg?5REc1fB6BT" alt="005-lxc-network-1.webp"><br>如果 lxc 为开启状态，进行一下重启。</p><h3 id="安装-TailScale"><a href="#安装-TailScale" class="headerlink" title="安装 TailScale"></a>安装 TailScale</h3><p>正常登录Tailscale后台，点击Add device，选择Linux server。<br><img src="https://r2.redsnailmc.com/picture/202601/02/005-tailscale.jpg?wNEYaZGn38" alt="005-tailscale.webp"><br>Tags没有有需求建议关掉。<br><img src="https://r2.redsnailmc.com/picture/202601/02/005-ts-tags.jpg?0Zr6bzKP16" alt="005-ts-tags.webp"><br>其他的选项无需改动，点击最下方的生成脚本，复制下来。<br><img src="https://r2.redsnailmc.com/picture/202601/02/005-script.jpg?qpJFmH0XVi" alt="005-script.webp">粘贴到LXC Shell中，等待安装完成即可。</p><h3 id="配置-Subnet"><a href="#配置-Subnet" class="headerlink" title="配置 Subnet"></a>配置 Subnet</h3><p>首先启用IP转发功能，在LXC中执行（注意检查sudo是否安装）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;net.ipv4.ip_forward = 1&#x27; | sudo tee -a /etc/sysctl.d/99-tailscale.conf</span><br><span class="line">echo &#x27;net.ipv6.conf.all.forwarding = 1&#x27; | sudo tee -a /etc/sysctl.d/99-tailscale.conf</span><br><span class="line">sudo sysctl -p /etc/sysctl.d/99-tailscale.conf</span><br></pre></td></tr></table></figure><p>添加子网路由</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tailscale set --advertise-routes=10.0.0.0/24 </span><br></pre></td></tr></table></figure><p>回到Tailscale管理面板，启用子网路由。<br><img src="https://r2.redsnailmc.com/picture/202601/02/%E5%88%A9%E7%94%A8Subnet%20%E4%B8%8EPVE%E8%99%9A%E6%8B%9F%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E6%89%80%E6%9C%89%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%81-1767356513892.jpg?fJZJ78vbh0" alt="564x420"><img src="https://r2.redsnailmc.com/picture/202601/02/%E5%88%A9%E7%94%A8Subnet%20%E4%B8%8EPVE%E8%99%9A%E6%8B%9F%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E6%89%80%E6%9C%89%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%81-1767356539087.jpg?zBA6XGAWGd" alt="563x463"><br>Subnet 配置完毕</p><h3 id="连接虚拟机到网络"><a href="#连接虚拟机到网络" class="headerlink" title="连接虚拟机到网络"></a>连接虚拟机到网络</h3><p>打开虚拟机管理页面<br><img src="https://r2.redsnailmc.com/picture/202601/02/%E5%88%A9%E7%94%A8Subnet%20%E4%B8%8EPVE%E8%99%9A%E6%8B%9F%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E6%89%80%E6%9C%89%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%81-1767356929999.jpg?JzVIyFjfBO" alt="526x338"><br>桥接选刚刚的Linux Bridge<br><img src="https://r2.redsnailmc.com/picture/202601/02/%E5%88%A9%E7%94%A8Subnet%20%E4%B8%8EPVE%E8%99%9A%E6%8B%9F%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%BF%9C%E7%A8%8B%E6%89%80%E6%9C%89%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%81-1767357060352.jpg?yGSeBo3s3a" alt="利用Subnet 与PVE虚拟交换机，实现远程所有虚拟机！-1767357060352.webp"><br>最后在系统中，设置此网卡的IP设置为一个10.0.0.0&#x2F;24网段下的IP即可，子网掩码填写 255.255.255.0，大多数情况够用。</p><p>至此配置完毕，现在可以直接使用10.0.0.x IP访问虚拟机。</p>]]></content>
+    
+    
+    <summary type="html">本文介绍了一种在PVE环境下，通过单一LXC容器运行Tailscale并配置Subnet路由，结合虚拟交换机实现远程访问所有虚拟机的优化方案。该方法避免了在每个虚拟机安装Tailscale客户端造成的内存浪费，同时解决了子网代理导致的局域网冲突问题，实现高效、隔离的网络访问。</summary>
+    
+    
+    
+    
+    <category term="教程" scheme="https://www.ranbytes.com/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="TailScale" scheme="https://www.ranbytes.com/tags/TailScale/"/>
+    
+    <category term="内网穿透" scheme="https://www.ranbytes.com/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+    <category term="PVE" scheme="https://www.ranbytes.com/tags/PVE/"/>
+    
+  </entry>
   
   <entry>
     <title>2026 新年快乐！</title>
